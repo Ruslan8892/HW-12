@@ -1,29 +1,23 @@
-// let body = document.querySelector("body");
-// let input = document.querySelector("input");
-// let button = document.querySelector("button");
-// button.addEventListener("click", function() {
-//     let p = document.createElement("p");
-//     window.localStorage.setItem("task", input.value);
-//     p.textContent = window.localStorage.getItem("task");
-//     body.appendChild(p)
-//     input.value = "";
-// })
-// let pPop = document.querySelectorAll("p");
-//     pPop.forEach(item => {
-//         item.addEventListener("click", function() {
-//             item.remove()})
-//         })
-let input = document.querySelector("input")
-let button = document.querySelector("button")
+let body = document.querySelector("body");
+let input = document.querySelector("input");
+let button = document.querySelector("button");
+if (window.localStorage.getItem("text") !== null) {
+    let p = document.createElement("p");
+    p.innerHTML = window.localStorage.getItem("text");
+    body.appendChild(p);
 button.addEventListener("click", function() {
-    window.localStorage.setItem("task", input.value)
-    let p = document.createElement("p")
-    body.appendChild(p)
-    input.value = ""
+        window.localStorage.setItem("text", input.value);
+        let p = document.createElement("p");
+        p.innerHTML = window.localStorage.getItem("text");
+        body.appendChild(p);
+        let pPop = document.querySelectorAll("p");
+    pPop.forEach(item => {
+        item.addEventListener("click", function() {
+            item.remove()
+        window.localStorage.removeItem("text")})
+        })
+    input.value = "";
 })
-let pPop = document.querySelectorAll("p")
-pPop.forEach(item => {
-    item.textContent = window.localStorage.getItem("task")
-    item.addEventListener("click", function() {
-        item.remove()})
-})
+} else {
+    window.localStorage.setItem("text", "");
+}
